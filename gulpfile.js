@@ -1,7 +1,8 @@
-function defaultTask(cb) {
-    // place code for your default task here
-    console.log('test msg');
-    cb();
-  }
-  
-  exports.default = defaultTask
+var gulp = require("gulp");
+
+gulp.task('testTask', function (done) {
+    console.log('This is a test task!');
+    done();
+});
+
+gulp.task("default", gulp.series("testTask"));
