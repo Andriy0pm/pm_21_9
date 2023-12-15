@@ -1,14 +1,15 @@
 {
-  "name": "pm_21_9",
+  "name": "pm_21_09",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andriy_Zherebetskiy",
+  "author": "Andriy",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.29.3",
     "browsersync": "^0.0.1-security",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",

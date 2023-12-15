@@ -1,9 +1,10 @@
-function simpleTask() {
+function simpleTask(cd) {
     console.log('This is test task!');
+    cd();
 }
 exports.default = simpleTask
 
-const { src, dest, watch, series} = require ("gulp");
+const { src, dest, watch, series, parallel} = require ("gulp");
 const concat = require ("gulp-concat");
 const sass = require('gulp-sass')(require('sass'))
 const autoprefixer = require ("gulp-autoprefixer");
@@ -11,10 +12,20 @@ const cssnano = require ("gulp-cssnano");
 const rename = require ("gulp-rename");
 const uglify = require ("gulp-uglify");
 const imagemin = require ("gulp-imagemin");
+const sync = require("browser-sync").create();
+
+function server(){
+    sync.init({
+        server: { baseDir: 'app/'}
+    })
+    
+}
+exports.server =server
+
 //копіювання HTML файлів в папку dist
 function task_html() {
     return src ("app/*.html")
-        .pipe(dest("dist"));
+        .pipe(dest("dist"))
 }
 exports.html = task_html
 //об'єднання, компіляція Sass в CSS, додавання префіксів і подальша мінімізація коду
@@ -28,7 +39,7 @@ function task_sass () {
         }))
         .pipe (cssnano ())
         .pipe (rename ({suffix: '.min'}))
-        .pipe (dest ( "build/css"));
+        .pipe (dest ( "app/build/css"))
 }
 exports.sass = task_sass
 
@@ -38,7 +49,8 @@ function task_scripts () {
         .pipe (concat ( 'scripts.js')) // конкатенація js-файлів в один
         .pipe (uglify ()) //стиснення коду
         .pipe (rename ({suffix: '.min'})) //перейменування файлу з приставкою .min
-        .pipe (dest ("dist/js")); // директорія продакшена
+        .pipe (dest ("dist/js")) // директорія продакшена
+        .pipe (sync.stream())
 }
 exports.scripts = task_scripts
 
@@ -61,8 +73,10 @@ function task_watch() {
     watch ("app/js/*.js", task_scripts);
     watch ("app/sass/*.sass", task_sass);
     watch ("app/images/*.+(jpg|jpeg|png|gif)", task_imgs);
+    watch ("app/**/*.html").on("change", sync.reload);
+    
 }
 exports.watch = task_watch
 
 //Запуск тасків за замовчуванням
-exports.build = series(task_html, task_sass, task_scripts, task_imgs, task_watch)
+exports.default = parallel(task_html, task_sass, task_scripts, task_imgs, task_watch, server, simpleTask)
