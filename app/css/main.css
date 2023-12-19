@@ -769,19 +769,27 @@ body {
 }
 
 .circle__chart {
-    background: url("../img/round-chart.svg");
-    width: 137px;
-    height: 137px;
+    background: #272642;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+}
+
+#myPieChart {
+    margin-top: 60px;
+    margin-left: 1px;
+    z-index: 1;
 }
 
 .circle__chart_proc {
 
     font-size: 24px;
-    color: var(--icon-2);
+    color: #272642;
 }
 
 .circle__chart_text {

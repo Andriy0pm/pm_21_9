@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="scss/normalise.css">
@@ -124,26 +125,6 @@
                 </div>
             </div>
             <div class="nav__bottom_points_wrap" id="nav__bottom_points_wrap">
-                <!--<div class="nav__bottom_point">
-                    <div class="nav_circle grey_circle"></div>
-                    <div class="nav__bottom_point_text">Work</div>
-                </div>
-                <div class="nav__bottom_point">
-                    <div class="nav_circle purple_circle"></div>
-                    <div class="nav__bottom_point_text">Looking for contact</div>
-                </div>
-                <div class="nav__bottom_point">
-                    <div class="nav_circle green_circle"></div>
-                    <div class="nav__bottom_point_text">Looking for something</div>
-                </div>
-                <div class="nav__bottom_point">
-                    <div class="nav_circle orange_circle"></div>
-                    <div class="nav__bottom_point_text">Search</div>
-                </div>
-                <div class="nav__bottom_point">
-                    <div class="nav_circle blue_circle"></div>
-                    <div class="nav__bottom_point_text">Something dark side</div>
-                </div>-->
             </div>
         </div>
 
@@ -274,15 +255,15 @@
                     <div class="line__charts_wrap">
                         <div class="line__chart_block">
                             <div class="line__chart_left">
-                                <img id="image1" src="img/line-chart-not-check.svg" onclick="changeImage('image1')" alt="chart">
+                                <img id="image1" src="img/line-chart-check.svg" onclick="changeImage('image1')" alt="chart">
                                 <div class="line__chart_text">i.e. john-smith.com</div>
                             </div>
                             <div class="line__chart_right">
                                 <div class="line__chart_bd">
-                                    <div class="line__chart_orange"></div>
+                                    <div class="line__chart_orange" id="dynamicLine_orange"></div>
                                 </div>
                                 <div class="line__chart_text">
-                                    <p>75%</p>
+                                    <p id="votePercentage1">75%</p>
                                 </div>
                             </div>
                         </div>
@@ -293,16 +274,16 @@
                             </div>
                             <div class="line__chart_right">
                                 <div class="line__chart_bd">
-                                    <div class="line__chart_purple"></div>
+                                    <div class="line__chart_purple" id="dynamicLine_purple"></div>
                                 </div>
                                 <div class="line__chart_text">
-                                    25%
+                                    <p id="votePercentage4">25%</p>
                                 </div>
                             </div>
                         </div>
                         <div class="vote__wrap">
                             <div class="vote_results">
-                                <div>9832 Votes</div>
+                                <div><p id="votePercentage3">9832 Votes</p></div>
                                 <div class="vote__border"></div>
                                 <div>Final results</div>
                             </div>
@@ -406,7 +387,13 @@
             <div class="nav__right_chart_block">
                 <div class="circle__chart">
                     <div class="circle__chart_proc">
-                        <p id="votePercentage">75%</p>
+                        <div class="vote_Percentage">
+                        <p id="votePercentage2">75%</p>
+                        </div>
+                        <div class="green-circle"></div>
+                        <div class="myPieChart">
+                            <canvas id="myPieChart" width="138" height="138"></canvas>
+                        </div>
                     </div>
                     <div class="circle__chart_text">
                         Completed

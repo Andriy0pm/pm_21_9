@@ -584,6 +584,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  transition: width 0.5s ease-in-out;
 }
 
 .line__chart_orange {
@@ -635,6 +636,10 @@ body {
   display: flex;
   align-items: center;
   column-gap: 10px;
+}
+
+#votePercentage3 {
+  margin-top: 16px;
 }
 
 .some__content_wrap {
@@ -762,7 +767,7 @@ body {
 }
 
 .circle__chart {
-  background: url("../img/round-chart.svg");
+  background: #222141;
   width: 137px;
   height: 137px;
   display: flex;
@@ -771,14 +776,48 @@ body {
   justify-content: center;
 }
 
+.vote_Percentage{
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -20px;
+  z-index: 3;
+}
+
+.green-circle {
+  width: 120px;
+  height: 120px;
+  background-color:#272642;
+  border-radius: 50%;
+  position: absolute;
+  top: 113px;
+  left: 1134px;
+  z-index: 2;
+}
+
+.myPieChart{
+  position: absolute;
+  top: 39px;
+  left: 1123px;
+  z-index: 1;
+}
+
+#myPieChart {
+  margin-top: 60px;
+  margin-left: 2px;
+}
+
+
 .circle__chart_proc {
   font-size: 24px;
   color: var(--icon-2);
 }
 
 .circle__chart_text {
-  font-size: 14px;
+  font-size: 10px;
   color: var(--icon-2);
+  margin-top: 20px;
+  margin-left: 8px;
+  z-index: 3;
 }
 
 .nav__chart_text {

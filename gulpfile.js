@@ -16,7 +16,9 @@ const sync = require("browser-sync").create();
 
 function server(){
     sync.init({
-        server: { baseDir: 'app/'}
+        server: { baseDir: 'app/'},
+        //online: false,
+        //logConnections: false,
     })
     
 }
