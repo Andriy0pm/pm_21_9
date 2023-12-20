@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 
 
-// Отримуємо елементи за їх id
+// Елементи за їх id
 var votePercentageElement = document.getElementById("votePercentage1");
 var votePercentage1Element = document.getElementById("votePercentage2");
 var votePercentage2Element = document.getElementById("votePercentage3");
@@ -52,13 +52,13 @@ function setLinepLength(newlength){
     lineElementp.style.width = newlength;
 }
 
-// Функція, яка викликається при натисканні на кнопку "Vote"
+// Функція яка викликається при натисканні на кнопку "Vote"
 
 function vote() {
     
         var imageElement = document.getElementById('image1');
         
-        // Перевіряємо, чи шлях до зображення "image2" рівний 'img/line-chart-check.svg'
+        
         if (imageElement && imageElement.src.endsWith('img/line-chart-check.svg')) {
             if (votesInt < 100) {
                 votesInt++;
@@ -78,10 +78,10 @@ function vote() {
         voted=votesInt2;
     }
 
-    // Оновлюємо дані в діаграмі
+    // Оновлюємо даних в діаграмі
     myPieChart.data.datasets[0].data = [votesInt, votesInt2];
 
-    // Оновлюємо текстові значення відсотків та голосів
+    // Оновлення текстових значень відсотків та голосів
     votePercentageElement.textContent = votesInt + "%";
     votePercentage1Element.textContent = voted + "%";
     votePercentage3Element.textContent = votesInt2 + "%";
@@ -90,7 +90,7 @@ function vote() {
     setLineoLength(votePercentageElement.textContent);
     setLinepLength(votePercentage3Element.textContent);
 
-    // Оновлюємо діаграму
+    // Оновленя діаграми
     myPieChart.update();
 }
 
