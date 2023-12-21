@@ -41,7 +41,7 @@ function task_sass () {
         }))
         .pipe (cssnano ())
         .pipe (rename ({suffix: '.min'}))
-        .pipe (dest ( "app/build/css"))
+        .pipe (dest ( "app/css"))
 }
 exports.sass = task_sass
 
